@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeoTalks - A People's Geopolitics Blog</title>
+  <style>
+    body { font-family: sans-serif; margin: 0; padding: 0; background: #f4f4f4; color: #222; }
+    header { background: #333; color: white; padding: 1em; text-align: center; }
+    main { padding: 1em; max-width: 800px; margin: auto; }
+    textarea, input[type="text"] { width: 100%; padding: 0.5em; margin-bottom: 1em; }
+    button { padding: 0.5em 1em; cursor: pointer; background: #333; color: white; border: none; }
+    article { background: white; padding: 1em; margin: 1em 0; border-left: 4px solid #333; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>GeoTalks</h1>
+    <p>Share your perspective on geopolitics. No tracking. No censorship.</p>
+  </header>
+  <main>
+    <h2>Submit Your Thoughts</h2>
+    <form id="submissionForm">
+      <input type="text" id="title" placeholder="Your Title" required />
+      <textarea id="content" placeholder="Write your perspective..." rows="6" required></textarea>
+      <button type="submit">Post</button>
+    </form>
+
+    <section id="posts">
+      <h2>Community Voices</h2>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById('submissionForm');
+    const postsSection = document.getElementById('posts');
+
+    form.onsubmit = (e) => {
+      e.preventDefault();
+      const title = document.getElementById('title').value;
+      const content = document.getElementById('content').value;
+
+      if (!title || !content) return;
+
+      const post = document.createElement('article');
+      post.innerHTML = `<h3>${title}</h3><p>${content}</p>`;
+      postsSection.appendChild(post);
+
+      form.reset();
+    };
+  </script>
+</body>
+</html>
